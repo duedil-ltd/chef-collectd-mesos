@@ -1,0 +1,7 @@
+DEPENDENCIES
+  collectd_mesos
+    path: .
+    metadata: true
+
+GRAPH
+  collectd_mesos (0.0.1)

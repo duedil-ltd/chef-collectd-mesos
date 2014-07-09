@@ -1,0 +1,15 @@
+<LoadPlugin "python">
+    Globals true
+</LoadPlugin>
+
+<Plugin "python">
+    ModulePath "<%= @config[:collectd_path] %>/lib/collectd/python/plugins"
+
+    Import "mesos"
+
+    <Module "mesos">
+        Verbose <%= @config[:verbose] %>
+        Host <%= @config[:mesos][:host] %>
+        Port <%= @config[:mesos][:port] %>
+    </Module>
+</Plugin>
