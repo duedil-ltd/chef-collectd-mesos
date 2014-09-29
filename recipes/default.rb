@@ -7,14 +7,11 @@ git node[:collectd_mesos][:install_dir] do
     action :sync
 end
 
-# Create the python plugin directory if it doesn't exist
-directory "#{node[:collectd_mesos][:collectd_path]}/lib/collectd/python/plugins" do
-    recursive true
-end
+plugins_dir = "#{node[:collectd_haproxy][:collectd_path]}/lib/collectd/python/plugins"
 
 # Drop in the plugin file
 bash "install_collectd_mesos" do
-    command "cp #{node[:collectd_mesos][:install_dir]}/mesos.py #{node[:collectd_mesos][:collectd_path]}/lib/collectd/python/plugins/"
+    command "mkdir -p #{plugins_dir}; cp #{node[:collectd_mesos][:install_dir]}/mesos.py #{plugins_dir}/"
     action :run
 end
 
