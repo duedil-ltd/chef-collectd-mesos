@@ -10,7 +10,7 @@ end
 plugins_dir = "#{node[:collectd_haproxy][:collectd_path]}/lib/collectd/python/plugins"
 
 # Drop in the plugin file
-bash "install_collectd_mesos" do
+execute "install_collectd_mesos" do
     command "mkdir -p #{plugins_dir}; cp #{node[:collectd_mesos][:install_dir]}/mesos.py #{plugins_dir}/"
     action :run
 end
