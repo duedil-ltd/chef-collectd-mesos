@@ -7,7 +7,7 @@ git node[:collectd_mesos][:install_dir] do
     action :sync
 end
 
-plugins_dir = "#{node[:collectd_haproxy][:collectd_path]}/lib/collectd/python/plugins"
+plugins_dir = "#{node[:collectd_mesos][:collectd_path]}/lib/collectd/python/plugins"
 
 # Drop in the plugin file
 execute "install_collectd_mesos" do
