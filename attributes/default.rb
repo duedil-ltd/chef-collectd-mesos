@@ -7,3 +7,6 @@ default[:collectd_mesos][:verbose] = false
 
 default[:collectd_mesos][:mesos][:host] = node[:ipaddress]
 default[:collectd_mesos][:mesos][:port] = 5050
+default[:collectd_mesos][:mesos][:type] = "master"
+default[:collectd_mesos][:mesos][:version] = node[:mesos][:version]
+

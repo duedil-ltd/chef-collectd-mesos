@@ -5,7 +5,7 @@
 <Plugin "python">
     ModulePath "<%= @config[:collectd_path] %>/lib/collectd/python/plugins"
 
-    Import "mesos"
+    Import "mesos-<%= @config[:mesos][:type] %>"
 
     <Module "mesos">
         Verbose <%= @config[:verbose] %>
