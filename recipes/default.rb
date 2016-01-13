@@ -8,15 +8,16 @@ git node[:collectd_mesos][:install_dir] do
 end
 
 plugins_dir = "#{node[:collectd_mesos][:collectd_path]}/lib/collectd/python/plugins"
+type = "#{node[:collectd_mesos][:mesos][:type]}"
 
 # Drop in the plugin file
 execute "install_collectd_mesos" do
-    command "mkdir -p #{plugins_dir}; cp #{node[:collectd_mesos][:install_dir]}/mesos.py #{plugins_dir}/"
+    command "mkdir -p #{plugins_dir}; cp #{node[:collectd_mesos][:install_dir]}/mesos-#{type}.py #{plugins_dir}/"
     action :run
 end
 
 # Configure the plugin config file
-template "#{node[:collectd_mesos][:collectd_path]}/etc/conf.d/mesos.conf" do
+template "#{node[:collectd_mesos][:collectd_path]}/etc/conf.d/mesos-#{type}.conf" do
     source "collectd.conf.erb"
     variables(
         :config => node[:collectd_mesos]
